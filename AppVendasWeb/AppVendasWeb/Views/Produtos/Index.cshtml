@@ -4,44 +4,56 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1 class="display-5 text-light my-5">Produtos</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-lg btn-outline-light d-inline-flex align-items-center">
+        <svg class="me-3" bootstrap-icon="PlusLg" width="16" height="16" aria-label="Alarms"></svg>Adicionar
+    </a>
 </p>
-<table class="table table-dark table-striped table-hover">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Descricao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Preco)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Categoria)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descricao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Preco)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Categoria.CategoriaName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ProdutoId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ProdutoId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ProdutoId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="table-responsive">
+    <table class="table table-hover" style="background-color: #8D7B68; color:white; border-radius: 7px;">
+        <thead class="tabelinha">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descricao)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Preco)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Categoria)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descricao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Preco)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Categoria.CategoriaName)
+                    </td>
+                    <td class="text-end">
+                        <a class="btn btn-light" asp-action="Edit" asp-route-id="@item.ProdutoId">
+                            <svg class="mx-2" bootstrap-icon="PencilFill" width="16" height="16" aria-label="Alarms"></svg>
+                        </a> |
+                        <a class="btn btn-light" asp-action="Details" asp-route-id="@item.ProdutoId">
+                            <svg class="mx-2" bootstrap-icon="CardList" width="16" height="16" aria-label="Alarms"></svg>
+                        </a> |
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.ProdutoId">
+                            <svg class="mx-2" bootstrap-icon="Trash" width="16" height="16" aria-label="Alarms"></svg>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

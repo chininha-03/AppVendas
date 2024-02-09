@@ -7,39 +7,41 @@
 <h1 class="display-5 text-light my-5">Categoria do Produto</h1>
 
 <p>
-    <a class="btn btn-outline-light" asp-action="Create">
-        <svg bootstrap-icon="FilePlus" width="24" height="24" aria-label="FilePlus "></svg>
-        Adicionar
+    <a asp-action="Create" class="btn btn-lg btn-outline-light d-inline-flex align-items-center">
+        <svg class="me-3" bootstrap-icon="PlusLg" width="16" height="16" aria-label="Alarms"></svg>Adicionar
     </a>
 </p>
-<table class="table table-dark table-striped table-hover">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CategoriaName)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+
+<div class="table-responsive">
+    <table class="table table-hover" style="background-color: #8D7B68; color:white; border-radius: 7px;">
+        <thead class="tabelinha">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CategoriaName)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.CategoriaId">
-                        <svg class="mx-3" bootstrap-icon="PencilFill" width="24" height="24" aria-label="PencilFill"></svg>
-                    Editar</a> |
-                    <a asp-action="Details" asp-route-id="@item.CategoriaId">
-                        <svg class="mx-3" bootstrap-icon="CardText" width="24" height="24" aria-label="CardText"></svg>
-                    Detalhes</a> |
-                    <a asp-action="Delete" asp-route-id="@item.CategoriaId">
-                        <svg class="mx-3" bootstrap-icon="Trash" width="24" height="24" aria-label="Trash2Fill"></svg>
-                     Deletar</a>
-                </td>
+                <th>
+                    <h4>Nome da Categoria</h4>
+                </th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CategoriaName)
+                    </td>
+                    <td class="text-end">
+                        <a class="btn btn-light" asp-action="Edit" asp-route-id="@item.CategoriaId">
+                            <svg class="mx-2" bootstrap-icon="PencilFill" width="16" height="16" aria-label="Alarms"></svg>
+                        </a> |
+                        <a class="btn btn-light" asp-action="Details" asp-route-id="@item.CategoriaId">
+                            <svg class="mx-2" bootstrap-icon="CardList" width="16" height="16" aria-label="Alarms"></svg>
+                        </a> |
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.CategoriaId">
+                            <svg class="mx-2" bootstrap-icon="Trash" width="16" height="16" aria-label="Alarms"></svg>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

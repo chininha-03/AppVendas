@@ -4,7 +4,7 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Editar</h1>
 
 <h4>Categoria</h4>
 <hr />
@@ -14,7 +14,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="CategoriaId" />
             <div class="form-group">
-                <label asp-for="CategoriaName" class="control-label"></label>
+                <label class="control-label">Nome da Categoria</label>
                 <input asp-for="CategoriaName" class="form-control" />
                 <span asp-validation-for="CategoriaName" class="text-danger"></span>
             </div>
@@ -33,5 +33,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
