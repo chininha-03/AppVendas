@@ -4,9 +4,9 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Editar</h1>
 
-<h4>Cliente</h4>
+<h4>Editar Dados do Cliente</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -20,7 +20,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="CPF" class="control-label"></label>
-                <input asp-for="CPF" class="form-control" />
+                <input asp-for="CPF" id="CPF" class="form-control" />
                 <span asp-validation-for="CPF" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -35,7 +35,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Celular" class="control-label"></label>
-                <input asp-for="Celular" class="form-control" />
+                <input asp-for="Celular" id="Cell" class="form-control" />
                 <span asp-validation-for="Celular" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -49,14 +49,18 @@
                 </label>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-success" />
+
+                <button type="submit" class="btn btn-success align-items-center">
+                    <svg bootstrap-icon="Floppy" width="13" height="13" aria-label="ArrowLeft"></svg>
+                     Salvar
+                </button>
             </div>
         </form>
     </div>
 </div>
 
-<div class="btn btn-light mt-2">
-    <a  asp-action="Index"> <svg bootstrap-icon="ArrowLeft" width="24" height="24" aria-label="ArrowLeft"></svg> Retornar</a>
+<div class="btn btn-outline-secondary mt-2 align-items-sm-center text-uppercase ">
+    <a asp-action="Index" class="text-decoration-none text-white"> <svg bootstrap-icon="ArrowLeft" width="15" height="15" aria-label="ArrowLeft"></svg> Retornar</a>
 </div>
 
 @section Scripts {
