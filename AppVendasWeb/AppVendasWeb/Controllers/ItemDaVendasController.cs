@@ -17,12 +17,16 @@ namespace AppVendasWeb.Controllers
         public ItemDaVendasController(AppVendasContext context)
         {
             _context = context;
+
         }
 
         // GET: ItemDaVendas
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(Guid? id)
         {
-            var appVendasContext = _context.ItemDaVendas.Include(i => i.Produto).Include(i => i.Venda);
+            var appVendasContext = _context.ItemDaVendas.Include(i => i.Produto).Include(i => i.Venda).Include(i => i.Produto).
+                Where(i => i.VendaId == id);
+
+            ViewData["VendaId"] = id;
             return View(await appVendasContext.ToListAsync());
         }
 
@@ -47,10 +51,10 @@ namespace AppVendasWeb.Controllers
         }
 
         // GET: ItemDaVendas/Create
-        public IActionResult Create()
+        public IActionResult Create(Guid id)
         {
             ViewData["ProdutoId"] = new SelectList(_context.Produtos, "ProdutoId", "Descricao");
-            ViewData["VendaId"] = new SelectList(_context.Vendas, "VendaId", "VendaId");
+            ViewData["VendaId"] = new SelectList(_context.Vendas.Where(i => i.VendaId == id), "VendaId", "NotaFiscal");
             return View();
         }
 
@@ -69,7 +73,7 @@ namespace AppVendasWeb.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["ProdutoId"] = new SelectList(_context.Produtos, "ProdutoId", "Descricao", itemDaVenda.ProdutoId);
-            ViewData["VendaId"] = new SelectList(_context.Vendas, "VendaId", "VendaId", itemDaVenda.VendaId);
+            ViewData["VendaId"] = new SelectList(_context.Vendas, "VendaId", "NotaFiscal", itemDaVenda.VendaId);
             return View(itemDaVenda);
         }
 
@@ -87,7 +91,7 @@ namespace AppVendasWeb.Controllers
                 return NotFound();
             }
             ViewData["ProdutoId"] = new SelectList(_context.Produtos, "ProdutoId", "Descricao", itemDaVenda.ProdutoId);
-            ViewData["VendaId"] = new SelectList(_context.Vendas, "VendaId", "VendaId", itemDaVenda.VendaId);
+            ViewData["VendaId"] = new SelectList(_context.Vendas.Where(i => i.VendaId == id), "VendaId", "NotaFiscal", itemDaVenda.VendaId);
             return View(itemDaVenda);
         }
 
@@ -124,7 +128,7 @@ namespace AppVendasWeb.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["ProdutoId"] = new SelectList(_context.Produtos, "ProdutoId", "Descricao", itemDaVenda.ProdutoId);
-            ViewData["VendaId"] = new SelectList(_context.Vendas, "VendaId", "VendaId", itemDaVenda.VendaId);
+            ViewData["VendaId"] = new SelectList(_context.Vendas, "VendaId", "NotaFiscal", itemDaVenda.VendaId);
             return View(itemDaVenda);
         }
 

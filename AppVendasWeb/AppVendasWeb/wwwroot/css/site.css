@@ -28,9 +28,13 @@ body {
     text-decoration: none;
 }
 
-.tabelinha{
+.tabelinha {
     color: white;
-    
 }
 
-
+/*.tabelaDetalhes {
+    border: double;
+    background-color: #503C3C;
+    border-radius: 20px;
+    object-fit: contain;
+}*/

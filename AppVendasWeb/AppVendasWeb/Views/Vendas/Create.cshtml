@@ -13,12 +13,12 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="DataVenda" class="control-label"></label>
-                <input asp-for="DataVenda" class="form-control" />
+                <input asp-for="DataVenda" value=@DateTime.Now.ToString("yyyy-MM-dd HH:mm") class="form-control" />
                 <span asp-validation-for="DataVenda" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ValorTotal" class="control-label"></label>
-                <input asp-for="ValorTotal" class="form-control" />
+                <input asp-for="ValorTotal" type="number" step="0.01" class="form-control" />
                 <span asp-validation-for="ValorTotal" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -28,7 +28,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="ClienteId" class="control-label"></label>
-                <select asp-for="ClienteId" class ="form-control" asp-items="ViewBag.ClienteId"></select>
+                <select asp-for="ClienteId" class="form-control" asp-items="ViewBag.ClienteId"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Criar" class="btn mb-2 mt-2" style="background-color: #503C3C; color:white;" />
@@ -42,5 +42,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
